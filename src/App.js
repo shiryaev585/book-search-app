@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import BooksList from './components/BooksList';
+import SearchIcon from './components/SearchIcon';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <h1 className='title'>Find your book</h1>
+      <form className='form'>
+        <input
+          type='text'
+          className='search-input mt-50'
+          placeholder='Search...'
+        />
+        <button className='search-btn'><SearchIcon /></button>
+      </form>
+
+      <BooksList />
     </div>
   );
 }
