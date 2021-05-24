@@ -1,6 +1,12 @@
+import BookItem from './BookItem';
+
 const BooksList = () => {
     return ( 
-        <p>BooksList</p>
+        <>
+        <BookItem />
+        <BookItem />
+        <BookItem />
+        </>
      );
 }
  
