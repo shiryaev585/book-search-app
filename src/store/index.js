@@ -1,10 +1,10 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import booksReduser from './reducers/booksReduser';
+import booksReducer from './reducers/booksReducer';
 
 const rootReduser = combineReducers({
-  booksReduser,
+  books: booksReducer,
 });
 
 export const store = createStore(rootReduser, composeWithDevTools(applyMiddleware(thunk)));

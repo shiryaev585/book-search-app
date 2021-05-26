@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 import BooksList from './components/BooksList';
 import SearchIcon from './components/SearchIcon';
+import { fetchBooks } from './store/actions/index';
 
-function App() {
+function App(props) {
   const [book, setBook] = useState();
 
   return (
@@ -25,4 +27,8 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = ({books}) => {
+  return books
+}
+
+export default connect(mapStateToProps, { fetchBooks })(App);

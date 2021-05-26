@@ -10,7 +10,7 @@ const initialState = {
   error: '',
 };
 
-const booksReduser = (state = initialState, action) => {
+const booksReducer = (state = initialState, action) => {
   switch (action.type) {
     case BOOKS_ARE_LOADING:
       return {
@@ -33,4 +33,4 @@ const booksReduser = (state = initialState, action) => {
   }
 };
 
-export default booksReduser;
+export default booksReducer;
