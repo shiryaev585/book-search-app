@@ -15,7 +15,7 @@ const booksReducer = (state = initialState, action) => {
     case BOOKS_ARE_LOADING:
       return {
         ...state,
-        loading: true,
+        isLoading: true,
       };
     case GET_BOOKS_SUCCESS:
       return {

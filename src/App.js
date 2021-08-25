@@ -5,30 +5,47 @@ import BooksList from './components/BooksList';
 import SearchIcon from './components/SearchIcon';
 import { fetchBooks } from './store/actions/index';
 
-function App(props) {
-  const [book, setBook] = useState();
+const App = (props) => {
+    const [book, setBook] = useState();
 
-  return (
-    <div className='App'>
-      <h1 className='title'>Find your book</h1>
-      <form className='form'>
-        <input
-          type='text'
-          className='search-input mt-50'
-          placeholder='Search...'
-          value={book}
-          onChange={(e) => setBook(e.target.value)}
-        />
-        <button className='search-btn'><SearchIcon /></button>
-      </form>
+    const handleChange = (event) => {
+      event.preventDefault();
+      setBook(event.target.value);
+      console.log(event.target.value);
+    };
 
-      <BooksList />
-    </div>
-  );
-}
+    const searchBooks = (event) => {
+        event.preventDefault();
+        console.log('DFSJFSJ');
+        fetchBooks();
+    };
 
-const mapStateToProps = ({books}) => {
-  return books
-}
+    return (
+        <div className='App'>
+            <h1 className='title'>Find your book</h1>
+            <form className='form'>
+                <input
+                    type='text'
+                    className='search-input mt-50'
+                    placeholder='Search...'
+                    value={book}
+                    onChange={handleChange}
+                />
+                <button
+                    className='search-btn'
+                    onClick={searchBooks}
+                >
+                    <SearchIcon />
+                </button>
+            </form>
+
+            <BooksList />
+        </div>
+    );
+};
+
+const mapStateToProps = ({ books }) => {
+    return books;
+};
 
 export default connect(mapStateToProps, { fetchBooks })(App);
