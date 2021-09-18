@@ -3,6 +3,7 @@ import { connect, useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import BooksList from './components/BooksList';
 import SearchIcon from './components/SearchIcon';
+import Loader from './components/Loader';
 import { fetchBooks } from './store/actions/fetchBooks';
 
 const App = (props) => {
@@ -22,31 +23,31 @@ const App = (props) => {
         fetchBooks(dispatch);
     };
 
-    if (props.isLoading) {
-        return <h1>LOADING</h1>
-    }
-
     return (
-        <div className='App'>
-            <h1 className='title'>Find your book</h1>
-            <form className='form'>
-                <input
-                    type='text'
-                    className='search-input mt-50'
-                    placeholder='Search...'
-                    value={book}
-                    onChange={handleChange}
-                />
-                <button
-                    className='search-btn'
-                    onClick={searchBooks}
-                >
-                    <SearchIcon />
-                </button>
-            </form>
+        <>
+            {props.isLoading && <Loader />}
+            <div className='App'>
+                <h1 className='title'>Find your book</h1>
+                <form className='form'>
+                    <input
+                        type='text'
+                        className='search-input mt-50'
+                        placeholder='Search...'
+                        value={book}
+                        onChange={handleChange}
+                    />
+                    <button
+                        className='search-btn'
+                        onClick={searchBooks}
+                    >
+                        <SearchIcon />
+                    </button>
+                </form>
 
-            <BooksList />
-        </div>
+                <BooksList />
+            </div>
+        </>
+        
     );
 };
 
