@@ -20,12 +20,14 @@ const booksReducer = (state = initialState, action) => {
     case GET_BOOKS_SUCCESS:
       return {
         ...state,
-        books: [...state.books, ...action.payload],
+        books: action.payload,
+        isLoading: false,
       };
     case GET_BOOKS_FAILURE:
       return {
         ...state,
         error: action.payload,
+        isLoading: false,
       };
 
     default:

@@ -1,12 +1,15 @@
 import { useState } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import BooksList from './components/BooksList';
 import SearchIcon from './components/SearchIcon';
-import { fetchBooks } from './store/actions/index';
+import { fetchBooks } from './store/actions/fetchBooks';
 
 const App = (props) => {
+    console.log('PROPS - ', props);
     const [book, setBook] = useState();
+    const dispatch = useDispatch();
+    const books = useSelector(state => state.books);
 
     const handleChange = (event) => {
       event.preventDefault();
@@ -16,9 +19,12 @@ const App = (props) => {
 
     const searchBooks = (event) => {
         event.preventDefault();
-        console.log('DFSJFSJ');
-        fetchBooks();
+        fetchBooks(dispatch);
     };
+
+    if (props.isLoading) {
+        return <h1>LOADING</h1>
+    }
 
     return (
         <div className='App'>
