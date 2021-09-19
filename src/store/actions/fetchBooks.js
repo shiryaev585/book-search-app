@@ -10,7 +10,6 @@ export const fetchBooks = async (dispatch, value) => {
     try {
         const books = await axios.get(`https://openlibrary.org/search.json?q=${value}`);
         await dispatch({ type: GET_BOOKS_SUCCESS, payload: books });
-        // console.log(books);
     }
     catch(error) {
         dispatch({

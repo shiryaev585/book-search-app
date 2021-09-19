@@ -8,7 +8,7 @@ import './Form.scss';
 const Form = (props) => {
     const [book, setBook] = useState('');
     const dispatch = useDispatch();
-    const books = useSelector((state) => state.books);
+    // const books = useSelector((state) => state.books);
 
     const handleChange = (event) => {
         event.preventDefault();
