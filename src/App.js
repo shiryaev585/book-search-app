@@ -7,25 +7,22 @@ import Loader from './components/Loader';
 import { fetchBooks } from './store/actions/fetchBooks';
 
 const App = (props) => {
-    console.log('PROPS - ', props);
-    const [book, setBook] = useState();
+    const [book, setBook] = useState('');
     const dispatch = useDispatch();
     const books = useSelector(state => state.books);
 
     const handleChange = (event) => {
       event.preventDefault();
       setBook(event.target.value);
-      console.log(event.target.value);
     };
 
     const searchBooks = (event) => {
         event.preventDefault();
-        fetchBooks(dispatch);
+        fetchBooks(dispatch, book);
     };
 
     return (
-        <>
-            <div className='App'>
+        <div className='App'>
                 <h1 className='title'>Find your book</h1>
                 <form className='form'>
                 {props.isLoading && <Loader />}
@@ -44,10 +41,8 @@ const App = (props) => {
                     </button>
                 </form>
 
-                <BooksList />
+                <BooksList books={books} />
             </div>
-        </>
-        
     );
 };
 

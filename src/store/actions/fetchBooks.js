@@ -5,13 +5,12 @@ import {
     GET_BOOKS_SUCCESS,
 } from './types';
 
-export const fetchBooks = async (dispatch) => {
-    console.log('fetchBooks START');
+export const fetchBooks = async (dispatch, value) => {
     await dispatch({ type: BOOKS_ARE_LOADING });
     try {
-        const books = await axios.get(`https://openlibrary.org/api/books?bibkeys=ISBN:0451526538&callback=mycallback`);
+        const books = await axios.get(`https://openlibrary.org/search.json?q=${value}`);
         await dispatch({ type: GET_BOOKS_SUCCESS, payload: books });
-        console.log(books);
+        // console.log(books);
     }
     catch(error) {
         dispatch({
