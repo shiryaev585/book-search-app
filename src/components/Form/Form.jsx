@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { fetchBooks } from '../../store/actions/fetchBooks';
 import Loader from '../Loader';
 import SearchIcon from '../SearchIcon';
@@ -8,7 +8,6 @@ import './Form.scss';
 const Form = (props) => {
     const [book, setBook] = useState('');
     const dispatch = useDispatch();
-    // const books = useSelector((state) => state.books);
 
     const handleChange = (event) => {
         event.preventDefault();
