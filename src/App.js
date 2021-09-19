@@ -25,13 +25,13 @@ const App = (props) => {
 
     return (
         <>
-            {props.isLoading && <Loader />}
             <div className='App'>
                 <h1 className='title'>Find your book</h1>
                 <form className='form'>
+                {props.isLoading && <Loader />}
                     <input
                         type='text'
-                        className='search-input mt-50'
+                        className='search-input'
                         placeholder='Search...'
                         value={book}
                         onChange={handleChange}
