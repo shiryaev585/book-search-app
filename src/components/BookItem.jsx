@@ -1,10 +1,8 @@
-const BookItem = ({ books }) => {
-    const data = books.books.data;
-    console.log(data);
+const BookItem = ({ books, authorName }) => {
 
     return ( 
         <div className='book'>
-            <p>Author: {data.docs.author_name}</p>
+            <p>Author: {authorName}</p>
         </div>
      );
 }
