@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import './App.scss';
-import BooksList from './components/BooksList';
+import BooksList from './components/BookList/BooksList';
 import Form from './components/Form';
 
 const App = () => {
